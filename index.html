@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#091018">
+  <title>NEON RUN // Alphabet Overdrive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="arcade-shell">
+    <header class="topbar">
+      <a class="brand" href="#game" aria-label="Neon Run 首頁"><span class="brand-mark">N<span>R</span></span><span class="brand-name">NEON<span>RUN</span><small>ALPHABET OVERDRIVE</small></span></a>
+      <div class="top-status"><span class="live-dot"></span><span>RUN SYSTEM ONLINE</span><span class="build-tag">V.26</span></div>
+      <button class="icon-button" id="soundToggle" type="button" aria-label="切換音效" title="切換音效">♫</button>
+    </header>
+    <section class="game-layout" id="game" aria-label="跑酷遊戲">
+      <div class="game-column">
+        <div class="hud" aria-label="遊戲狀態">
+          <div class="hud-stat score-stat"><span class="hud-label">SCORE</span><strong id="scoreValue">000000</strong></div>
+          <div class="hud-stat"><span class="hud-label">BEST</span><strong id="bestValue">000000</strong></div>
+          <div class="hud-stat speed-stat"><span class="hud-label">SPEED</span><strong id="speedValue">1.0<span>x</span></strong></div>
+          <div class="hud-stat combo-stat"><span class="hud-label">COMBO</span><strong id="comboValue">--</strong></div>
+          <button class="icon-button pause-button" id="pauseButton" type="button" aria-label="暫停遊戲" title="暫停 (P)">Ⅱ</button>
+        </div>
+        <div class="canvas-frame" id="canvasFrame">
+          <div class="frame-topline"><span>SECTOR 03 // NIGHT CIRCUIT</span><span id="runClock">00:00</span></div>
+          <canvas id="gameCanvas" width="1000" height="600" aria-label="三跑道跑酷遊戲畫面"></canvas>
+          <div class="canvas-scanline" aria-hidden="true"></div><div class="lane-readout" aria-hidden="true"><span>L</span><span>C</span><span>R</span></div>
+          <section class="game-overlay" id="gameOverlay" aria-live="polite"><div class="overlay-panel">
+            <div class="overlay-kicker" id="overlayKicker">SYSTEM READY</div><h1 id="overlayTitle">RUN<br><em>THE GRID</em></h1>
+            <p id="overlayText">切換跑道、閃避障礙，收集字母並即時釋放技能。</p>
+            <button class="primary-button" id="overlayAction" type="button"><span>▶</span> 開始遊戲</button>
+            <div class="overlay-hint" id="overlayHint">方向鍵移動 <i>•</i> A–Z 使用技能 <i>•</i> Esc 暫停</div>
+          </div></section>
+          <div class="toast" id="toast" role="status"></div><div class="effect-banner" id="effectBanner" aria-live="polite"></div>
+        </div>
+        <div class="inventory-bar"><div class="inventory-heading"><span class="inventory-icon">▦</span><span>LETTER CACHE</span><small id="inventoryCount">0 / 26</small></div><div class="inventory-slots" id="inventorySlots" aria-label="字母道具背包"></div></div>
+      </div>
+      <aside class="side-panel">
+        <div class="panel-heading"><span class="panel-index">01</span><div><h2>RUN TELEMETRY</h2><p>LIVE PERFORMANCE FEED</p></div><span class="panel-live">LIVE</span></div>
+        <div class="telemetry-row"><span>DISTANCE</span><strong id="distanceValue">0 <small>m</small></strong></div>
+        <div class="telemetry-row"><span>THREATS CLEARED</span><strong id="clearedValue">0</strong></div>
+        <div class="telemetry-row"><span>ACTIVE EFFECTS</span><strong id="activeEffects">—</strong></div>
+        <div class="effect-list" id="effectList"><span class="empty-effects">NO ACTIVE MODIFIERS</span></div>
+        <div class="panel-divider"></div>
+        <div class="panel-heading controls-heading"><span class="panel-index">02</span><div><h2>CONTROL DECK</h2><p>KEYBOARD / TOUCH</p></div></div>
+        <div class="quick-controls"><span><kbd>←</kbd><kbd>→</kbd><small>LANE</small></span><span><kbd>↑</kbd><kbd>SPACE</kbd><small>JUMP</small></span><span><kbd>↓</kbd><small>DUCK</small></span><span><kbd>ESC</kbd><small>PAUSE</small></span></div>
+        <div class="panel-footer"><span>COLLECT LETTERS</span><strong>PRESS <b>A–Z</b> TO FIRE</strong></div>
+      </aside>
+    </section>
+    <section class="touch-deck" aria-label="虛擬控制器"><div class="deck-heading"><span>VIRTUAL DECK</span><span>TOUCH READY <i class="live-dot"></i></span></div>
+      <div class="arrow-pad"><button class="direction-key" data-key="ArrowLeft" aria-label="向左切換跑道">←</button><button class="direction-key" data-key="ArrowUp" aria-label="跳躍">↑</button><button class="direction-key" data-key="ArrowDown" aria-label="下蹲">↓</button><button class="direction-key" data-key="ArrowRight" aria-label="向右切換跑道">→</button></div>
+      <div class="letter-pad" id="letterPad" aria-label="字母技能按鍵"></div>
+    </section>
+    <footer class="page-footer"><span>NEON RUN // TRAINING SIMULATION</span><span>26 LETTERS. THREE LANES. ONE RUN.</span></footer>
+  </main>
+  <script src="game.js" defer></script>
+</body>
+</html>
